@@ -12,19 +12,21 @@ import { ChartTooltip } from "./components/charts/tooltip/chart-tooltip";
 import { chartCssVars } from "./components/charts/chart-context";
 import { BackgroundPathLines } from "./components/kokonutui/background-paths";
 
+const media = (file: string) => `${import.meta.env.BASE_URL}media/${file}`;
+
 const services = [
-  { key: "siding", to: "/house-washing", n: "01", title: "House & soft washing", image: "/media/work-house-wash.jpg", copy: "Lower-pressure exterior cleaning shaped around siding, trim, fixtures, and landscaping.", detail: "Best for siding, soffits, trim, and exterior walls that need a careful reset." },
-  { key: "concrete", to: "/driveway-concrete", n: "02", title: "Driveways & concrete", image: "/media/work-driveway-wide.jpg", copy: "Even passes across hard flatwork, with edges, drainage, and nearby surfaces checked first.", detail: "Best for driveways, sidewalks, curbs, brick, and concrete gathering areas." },
-  { key: "wood", to: "/decks-patios", n: "03", title: "Decks & patios", image: "/media/work-deck.jpg", copy: "A material-first plan for wood, composite, concrete, pavers, and outdoor living areas.", detail: "Best for refreshing outdoor spaces without treating every material the same." },
-  { key: "fence", to: "/fences", n: "04", title: "Fence cleaning", image: "/media/work-house-finish.jpg", copy: "A cleaning method matched to vinyl, painted, or wood fence finishes and conditions.", detail: "Best for brightening fence panels while accounting for gates, beds, and property edges." },
-  { key: "commercial", to: "/commercial", n: "05", title: "Commercial exteriors", image: "/media/work-brick.jpg", copy: "Scope-led cleaning for entries, walks, storefronts, and exterior property surfaces.", detail: "Best for customer-facing exteriors that need a plan built around access and foot traffic." },
+  { key: "siding", to: "/house-washing", n: "01", title: "House & soft washing", image: media("work-house-wash.jpg"), copy: "Lower-pressure exterior cleaning shaped around siding, trim, fixtures, and landscaping.", detail: "Best for siding, soffits, trim, and exterior walls that need a careful reset." },
+  { key: "concrete", to: "/driveway-concrete", n: "02", title: "Driveways & concrete", image: media("work-driveway-wide.jpg"), copy: "Even passes across hard flatwork, with edges, drainage, and nearby surfaces checked first.", detail: "Best for driveways, sidewalks, curbs, brick, and concrete gathering areas." },
+  { key: "wood", to: "/decks-patios", n: "03", title: "Decks & patios", image: media("work-deck.jpg"), copy: "A material-first plan for wood, composite, concrete, pavers, and outdoor living areas.", detail: "Best for refreshing outdoor spaces without treating every material the same." },
+  { key: "fence", to: "/fences", n: "04", title: "Fence cleaning", image: media("work-house-finish.jpg"), copy: "A cleaning method matched to vinyl, painted, or wood fence finishes and conditions.", detail: "Best for brightening fence panels while accounting for gates, beds, and property edges." },
+  { key: "commercial", to: "/commercial", n: "05", title: "Commercial exteriors", image: media("work-brick.jpg"), copy: "Scope-led cleaning for entries, walks, storefronts, and exterior property surfaces.", detail: "Best for customer-facing exteriors that need a plan built around access and foot traffic." },
 ] as const;
 
 const reels = [
-  { title: "THE FIRST PASS", image: "/media/work-driveway-pov.jpg" },
-  { title: "EDGE WORK", image: "/media/work-deck.jpg" },
-  { title: "THE CLEAN LINE", image: "/media/work-commercial-stairs.jpg" },
-  { title: "FINAL RINSE", image: "/media/terez-working-steps.jpg" },
+  { title: "THE FIRST PASS", image: media("work-driveway-pov.jpg") },
+  { title: "EDGE WORK", image: media("work-deck.jpg") },
+  { title: "THE CLEAN LINE", image: media("work-commercial-stairs.jpg") },
+  { title: "FINAL RINSE", image: media("terez-working-steps.jpg") },
 ] as const;
 
 const nav = [
@@ -32,7 +34,7 @@ const nav = [
 ];
 
 function Brand() {
-  return <Link className="brand" to="/" aria-label="Squeaky T’s home"><span className="brand-mark"><img src="/media/instagram-profile.jpg" alt=""/></span><span>SQUEAKY T’S</span></Link>;
+  return <Link className="brand" to="/" aria-label="Squeaky T’s home"><span className="brand-mark"><img src={media("instagram-profile.jpg")} alt=""/></span><span>SQUEAKY T’S</span></Link>;
 }
 
 function Header() {
@@ -56,7 +58,7 @@ function Reveal({children,className=""}:{children:React.ReactNode;className?:str
 function ScrollToTop(){const {pathname}=useLocation();useEffect(()=>{window.history.scrollRestoration="manual";window.scrollTo({top:0,left:0,behavior:"instant"})},[pathname]);return null}
 
 function Hero() {
-  return <section className="hero"><div className="hero-art"><img src="/media/terez-equipment-candid.jpg" alt="Terez preparing professional pressure-cleaning equipment"/><div className="hero-tint"/><BackgroundPathLines/></div><div className="hero-content"><motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{duration:.5}}><span className="eyebrow"><MapPin size={15}/> CHARLOTTE, NORTH CAROLINA</span><h1>Charlotte grime<br/><em>doesn’t get</em><br/>the last word.</h1><p>Owner-led pressure and soft washing for the surfaces that frame your home, business, and block.</p><div className="hero-buttons"><Link className="button button-orange" to="/free-estimate">Get a free estimate <ArrowRight/></Link><a className="button button-ghost" href={business.phoneHref}><Phone/> Talk with Terez</a></div></motion.div></div><div className="hero-note"><span>SERVICE AREA</span><b>CHARLOTTE + SURROUNDING COMMUNITIES</b></div></section>;
+  return <section className="hero"><div className="hero-art"><img src={media("terez-equipment-candid.jpg")} alt="Terez preparing professional pressure-cleaning equipment"/><div className="hero-tint"/><BackgroundPathLines/></div><div className="hero-content"><motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{duration:.5}}><span className="eyebrow"><MapPin size={15}/> CHARLOTTE, NORTH CAROLINA</span><h1>Charlotte grime<br/><em>doesn’t get</em><br/>the last word.</h1><p>Owner-led pressure and soft washing for the surfaces that frame your home, business, and block.</p><div className="hero-buttons"><Link className="button button-orange" to="/free-estimate">Get a free estimate <ArrowRight/></Link><a className="button button-ghost" href={business.phoneHref}><Phone/> Talk with Terez</a></div></motion.div></div><div className="hero-note"><span>SERVICE AREA</span><b>CHARLOTTE + SURROUNDING COMMUNITIES</b></div></section>;
 }
 
 function TrustStrip() {
@@ -77,7 +79,7 @@ function Process(){return <section className="section process-section"><div clas
 const faqs=[["How do you choose between pressure washing and soft washing?","Durable hard surfaces can take more force, while siding usually needs a gentler application and rinse. The material and its condition determine the final method."],["Can I get a free estimate?","Yes. Share the location, surfaces, approximate size, and access notes so Terez can review the scope."],["Do you serve outside Charlotte?","Add the property ZIP to the estimate request. Terez will confirm whether it falls on the Charlotte-area route."],["Will I get an instant price online?","No. The online planner builds a concise project scope. Method, access, and project details are reviewed before a quote is provided."],["Should I move furniture or vehicles?","Mention movable items and access constraints in the request. Project-specific preparation guidance is provided before work begins."]];
 function Faqs(){return <section className="section faq-section"><div className="shell faq-layout"><SectionHead kicker="GOOD QUESTIONS" title="Before the water turns on."/><Accordion.Root type="single" collapsible>{faqs.map(([q,a],i)=><Accordion.Item key={q} value={`q${i}`}><Accordion.Header><Accordion.Trigger>{q}<ChevronDown/></Accordion.Trigger></Accordion.Header><Accordion.Content>{a}</Accordion.Content></Accordion.Item>)}</Accordion.Root></div></section>}
 
-function Owner(){return <section className="owner-section"><div className="shell owner-grid"><div className="owner-poster"><img src="/media/terez-owner-portrait.jpg" alt="Terez S., owner and operator of Squeaky T’s"/><div className="owner-caption"><span>TEREZ S.</span><small>OWNER / OPERATOR</small></div></div><Reveal><span className="kicker">MEET TEREZ</span><h2>The person on the page is behind the work.</h2><p>Work directly with Terez for residential and commercial exterior cleaning around Charlotte.</p><p>Each request becomes a clear project scope, ready for a surface-specific plan.</p><Link className="button button-dark" to="/about">Meet Terez <ArrowRight/></Link></Reveal></div></section>}
+function Owner(){return <section className="owner-section"><div className="shell owner-grid"><div className="owner-poster"><img src={media("terez-owner-portrait.jpg")} alt="Terez S., owner and operator of Squeaky T’s"/><div className="owner-caption"><span>TEREZ S.</span><small>OWNER / OPERATOR</small></div></div><Reveal><span className="kicker">MEET TEREZ</span><h2>The person on the page is behind the work.</h2><p>Work directly with Terez for residential and commercial exterior cleaning around Charlotte.</p><p>Each request becomes a clear project scope, ready for a surface-specific plan.</p><Link className="button button-dark" to="/about">Meet Terez <ArrowRight/></Link></Reveal></div></section>}
 
 function FinalCta(){return <section className="final-cta"><div className="particles" aria-hidden="true">{Array.from({length:12},(_,i)=><i key={i}/>)}</div><div className="shell"><span className="kicker">READY FOR A RESET?</span><h2>Put the property<br/>on the clean route.</h2><div><Link className="button button-dark" to="/free-estimate">Get a free estimate <ArrowRight/></Link><a className="button button-light" href={business.phoneHref}><Phone/> Talk with Terez</a></div></div></section>}
 
